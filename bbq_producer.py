@@ -12,8 +12,6 @@ import time
 
 # define variables that will be used throughout
 host = "localhost"
-#port = 9999
-#address_tuple = (host, port)
 smoker_temp_queue = '01-smoker'
 food_a_temp_queue = '02-food-A'
 food_b_temp_queue = '02-food-B'
@@ -43,7 +41,7 @@ def delete_queue(host: str, queue_name: str):
     ch.queue_delete(queue=queue_name)
 
 
-# define send message to the queue
+## define send message to the queue
 def send_message_to_queue(host: str, queue_name: str, message: str):
     """
     Creates and sends a message to the queue each execution.
@@ -77,30 +75,24 @@ def send_message_to_queue(host: str, queue_name: str, message: str):
         conn.close()
     
 
-    # use an enumerated type to set the address family to (IPV4) for internet
-    #socket_family = socket.AF_INET 
-
-    # use an enumerated type to set the socket type to UDP (datagram)
-    #socket_type = socket.SOCK_DGRAM 
-
-    # use the socket constructor to create a socket object we'll call sock
-    #sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
-
+    
 # defining reading in file
 def get_data_from_csv(file):
-   #Define main body function
-    file =  open(data_file,"r")
-# create a csv reader for our comma delimited data
-    reader = csv.reader(file, delimiter=",")
-    next(reader)
-    #defining columns:
-    #smoker_temp_channel1 = [1]
-    #food_a_temp_channel2 = [2]
-    #food_b_temp_channel3 = [3]
    
+    #Define main body function
+    file =  open(data_file,"r")
+    # create a csv reader for our comma delimited data
+    reader = csv.reader(file, delimiter=",")
+    
+    # skipping header row
+    next(reader)
+    
+
     for row in reader:
         fstring_time_column = f"{row[0]}"
-    #convert to float       
+    
+    # since of of the columns are numbers, converting them to floats
+    # convert to float       
         try:
             smoker_temp_channel1 = float(row[1])
             fstring_smoker_message = f"[{fstring_time_column}, {smoker_temp_channel1}]"
@@ -126,33 +118,10 @@ def get_data_from_csv(file):
             send_message_to_queue(host, food_b_temp_queue, food_b_temp_message)
         except ValueError:
            pass
+       
         
-        # calling each column
-        
-        #fstring_channel1_column = f"{row[1]}"
-        #fstring_channel2_column = f"{row[2]}"
-        #fstring_channel3_column = f"{row[3]}"
-        
-        # create fstring messages
-        #fstring_smoker_message = f"[{fstring_time_column}, {smoker_temp_channel1}]"
-        #fstring_food_a_message = f"[{fstring_time_column}, {food_a_temp_channel2}]"
-        #fstring_food_b_message = f"[{fstring_time_column}, {food_b_temp_channel3}]"
-        
-        # prepare a binary (1s and 0s) message to stream
-        #smoker_temp_message = fstring_smoker_message.encode()
-        #food_a_temp_message = fstring_food_a_message.encode()
-        #food_b_temp_message = fstring_food_b_message.encode()
-
-    # use the socket sendto() method to send the message
-        #sock.sendto(MESSAGE, address_tuple)
-        #print (f"Sent: {MESSAGE} on port {port}.")
-
-        # send messages to queues  
-        #send_message_to_queue(host, smoker_temp_queue, smoker_temp_message)
-        #send_message_to_queue(host, food_a_temp_queue, food_a_temp_message)
-        #send_message_to_queue(host, food_b_temp_queue, food_b_temp_message)
-    # sleep for a few seconds
-        #time.sleep(1)
+    # sleep in seconds
+        time.sleep(30)
 
 
             
@@ -164,17 +133,11 @@ if __name__ == "__main__":
     # ask the user if they'd like to open the RabbitMQ Admin site
     # setting show_offer for RabbitMQ site to off
     offer_rabbitmq_admin_site(show_offer)
-    # get the message from the command line
-    # if no arguments are provided, use the default message
-    # use the join method to convert the list of arguments into a string
-    # join by the space character inside the quotes
-    #message = " ".join(sys.argv[1:]) or "version3_send..."
-    # send the message to the queue
-    #send_message("localhost","task_queue3",message)
+   
     # delete queues to clear old messages
     delete_queue(host, smoker_temp_queue)
     delete_queue(host, food_a_temp_queue)
     delete_queue(host, food_b_temp_queue)
-
+    
     get_data_from_csv(data_file)
-    #print(send_message_to_queue)
+    

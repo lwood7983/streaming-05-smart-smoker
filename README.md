@@ -1,12 +1,12 @@
-# Loni Wood  
-# Module 5 
-# streaming-05-smart-smoker assignment
+## Loni Wood  
+## Module 5 
+## February 8, 2013
+## Creating a Producer
 
-
-## Overview:
+# Overview:
 The purpose of this code is to take a csv file and create a producer with three queues.  Each column of the csv will be sent to individual queues.
 
-## Before you begin
+# Before you begin
 Before you being running, be sure you have the following installed and running.
 - pika
 - RabbitMQ:
@@ -14,8 +14,8 @@ Before you being running, be sure you have the following installed and running.
 - active conda environment
 - open anaconda prompt terminal
 
-## How to run this program:
-# Files you will be using:
+# How to run this program:
+## Files you will be using:
  - bbq_producer.py
      - You will need to review the following and make updates if needed:
         - Check your host.  If it is not the "localhost", update
@@ -70,3 +70,7 @@ You'll need some way to send outgoing emails. I use my main Gmail account - othe
 
 # Screenshots of Program Running:
 ## Screenshot in Anaconda Prompt
+![smoker_on_anaconda](smoker_anaconda.png)
+
+## Screenshot in RabbitMQ
+![smoker_on_rabbitmq](smoker_rabbit.png)
