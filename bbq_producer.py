@@ -9,6 +9,7 @@ import webbrowser
 import csv
 import time
 
+#####################################################################################
 
 # define variables that will be used throughout
 host = "localhost"
@@ -18,7 +19,7 @@ food_b_temp_queue = '02-food-B'
 data_file = 'smoker-temps.csv'
 show_offer = True #Define if you want to have the RabbitMQ Admit site opened, True = Y, False = N
 
-
+######################################################################################
 
 # define option to open rabbitmq admin site
 def offer_rabbitmq_admin_site(show_offer):
@@ -31,6 +32,8 @@ def offer_rabbitmq_admin_site(show_offer):
                 webbrowser.open_new("http://localhost:15672/#/queues")
                 print()
 
+##########################################################################################
+
 ## define delete_queue
 def delete_queue(host: str, queue_name: str):
     """
@@ -40,6 +43,7 @@ def delete_queue(host: str, queue_name: str):
     ch = conn.channel()
     ch.queue_delete(queue=queue_name)
 
+############################################################################################
 
 ## define send message to the queue
 def send_message_to_queue(host: str, queue_name: str, message: str):
@@ -74,7 +78,7 @@ def send_message_to_queue(host: str, queue_name: str, message: str):
         # close the connection to the server
         conn.close()
     
-
+########################################################################################
     
 # defining reading in file
 def get_data_from_csv(file):
@@ -123,7 +127,7 @@ def get_data_from_csv(file):
     # sleep in seconds
         time.sleep(30)
 
-
+###########################################################################################
             
 # Standard Python idiom to indicate main program entry point
 # This allows us to import this module and use its functions

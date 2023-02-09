@@ -44,9 +44,9 @@ We have temperature sensors track temperatures and record them to generate a his
 ## Streaming Data
 Our thermometer records three temperatures every thirty seconds (two readings every minute). The three temperatures are:
 
- -- the temperature of the smoker itself.
- -- the temperature of the first of two foods, Food A.
- -- the temperature for the second of two foods, Food B.
+ - the temperature of the smoker itself.
+ - the temperature of the first of two foods, Food A.
+ - the temperature for the second of two foods, Food B.
  
 
 ## Significant Events
