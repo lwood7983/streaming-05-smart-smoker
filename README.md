@@ -1,6 +1,6 @@
-## Loni Wood  
-## Module 5 
-## February 8, 2013
+Loni Wood  
+Module 5 
+February 8, 2013
 ## Creating a Producer
 
 # Overview:
